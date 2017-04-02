@@ -1,0 +1,30 @@
+{
+  "name": "SocialCRON-FRONT",
+  "homepage": "https://github.com/geovannyAvelar/SocialCRON-FRONT",
+  "authors": [
+    "Agência CODE Plus <contato@agenciacodeplus.com.br>",
+    "Geovanny Avelar <geovanny.avelar@gmail.com"
+  ],
+  "description": "SocialCRON is an open-source platform to schedule posts on social media sites",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "0.97.8",
+    "jquery": ">=1.7.1",
+    "moment": ">=2.5.0",
+    "fullcalendar": ">=2.7.3",
+    "angular": ">=1.6.2",
+    "angular-route": ">=1.6.2",
+    "angular-cookies": ">=1.6.2",
+    "angular-ui-calendar": ">=1.0.2",
+    "mustache": ">=2.3.0"
+  }
+}
