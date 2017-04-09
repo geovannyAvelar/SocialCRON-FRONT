@@ -4,6 +4,7 @@ var jsFilesToMove = [
   'bower_components/angular/angular.min.js',
   'bower_components/angular-cookies/angular-cookies.min.js',
   'bower_components/angular-route/angular-route.min.js',
+  'bower_components/ng-facebook/ngFacebook.js',
   'bower_components/angular-ui-calendar/src/calendar.js',
   'bower_components/fullcalendar/fullcalendar.min.js',
   'bower_components/jquery/dist/jquery.min.js',
