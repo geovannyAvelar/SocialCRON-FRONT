@@ -1,0 +1,36 @@
+<header>
+  <nav class="top-nav blue-grey darken-4">
+    <div class="container">
+      <div class="nav-wrapper"><a class="page-title">Posts</a></div>
+    </div>
+  </nav>
+</header>
+
+<div class="row">
+  <ul ng-repeat="draft in drafts" class="collection col s12 m7 offset-m4">
+    <li class="collection-item avatar">
+      <span class="title">{{draft.title}}</span>
+      <p>{{draft.content}}</p>
+      <a data-target="deletePostModal" data-position="bottom" data-delay="50" data-tooltip="Delete post" class="btn btn-floating btn-small waves-effect waves-light red"
+        ng-click="setSelectedPost(draft.id)">
+        <i class="material-icons">delete_forever</i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- DELETE POST MODAL -->
+<div id="deletePostModal" class="modal">
+  <div class="modal-content">
+    <h4>Delete the post</h4>
+    <p>The post will be deleted permanently</p>
+  </div>
+  <div class="modal-footer">
+    <a ng-click="deleteDraft()" class="modal-action modal-close waves-effect waves-green btn-flat">
+      Yes, delete the post
+    </a>
+    <a class="modal-action modal-close waves-effect waves-red btn-flat">
+      No, cancel this action
+    </a>
+  </div>
+</div>

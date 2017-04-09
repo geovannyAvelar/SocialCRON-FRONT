@@ -1,0 +1,43 @@
+<header>
+  <nav class="top-nav blue-grey darken-4">
+    <div class="container">
+      <div class="nav-wrapper"><a class="page-title">New post</a></div>
+    </div>
+  </nav>
+</header>
+
+<div class="row">
+  <form name="draftForm" ng-submit="saveDraft()" class="col s12 m7 offset-m5">
+
+    <div class="row">
+      <p class="input-field col s12 m6">
+        <input ng-model="draft.title" id="title" name="title" type="text" minlength="3"
+                    maxlength="30" length="30" class="validate" required/>
+        <label for="title" data-success="OK"
+                data-error="Invalid title. You need a title with 3 characters or more">
+          Title
+        </label>
+      </p>
+    </div>
+
+    <div class="row">
+      <p class="input-field col s12 m6">
+        <textarea ng-model="draft.content" id="content" name="content"
+                  class="materialize-textarea validate" minlength="2" length="1000" maxlength="1000"
+                  required></textarea>
+        <label for="content" data-success="OK"
+                data-error="Invalid content. You need a content with 2 characters or more">
+            Content
+        </label>
+      </p>
+    </div>
+
+    <div class="row">
+      <button type="submit" ng-class="{'disabled': draftForm.$invalid}"
+              class="btn waves-effect waves-light green">
+        <i class="material-icons right">send</i> Save post
+      </button>
+    </div>
+
+  </form>
+</div>
