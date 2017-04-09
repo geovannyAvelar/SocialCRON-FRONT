@@ -1,0 +1,39 @@
+<div class="row login-container">
+  <form name="loginForm" ng-submit="login()" class="col s12 m8 offset-m4">
+    <h5>Sign in</h5>
+
+    <div class="row">
+      <div class="col s12 m6">
+        <span ng-bind="loginMessage" class="red-text"></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input type="text" name="username" ng-model="credential.username" required>
+        <label for="username">
+          Username or e-mail
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input type="password" name="password"
+                ng-model="credential.password" maxlength="16" required>
+        <label for="password">
+          Password
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 m6">
+      <button type="submit" ng-class="{'disabled': loginForm.$invalid}"
+              class="btn waves-effect waves-light green">
+        Sign in
+      </button>
+      </div>
+    </div>
+  </form>
+</div>
