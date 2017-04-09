@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocialCRON - Made by CODE. Built to last</title>
+    <link rel="icon" href="app/img/favicon32x32.png" sizes="32x32" />
+    <link rel="icon" href="app/img/favicon132x132.png" sizes="192x192" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="assets/components/css/materialize.min.css" />
+    <link rel="stylesheet" href="assets/components/css/fullcalendar.min.css" />
+    <link rel="stylesheet" href="app/css/main.css" />
+    <script type="text/javascript" src="assets/components/js/angular.min.js"></script>
+    <script type="text/javascript" src="assets/components/js/ngFacebook.js"></script>
+    <script type="text/javascript" src="assets/components/js/angular-route.min.js"></script>
+    <script type="text/javascript" src="assets/components/js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="assets/components/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/components/js/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/components/js/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="assets/components/js/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="assets/components/js/calendar.js"></script>
+    <script type="text/javascript" src="app/js/angular-main.js"></script>
+    <script type="text/javascript" src="app/js/services/session-service.js"></script>
+    <script type="text/javascript" src="app/js/services/auth-service.js"></script>
+    <script type="text/javascript" src="app/js/services/posts-service.js"></script>
+    <script type="text/javascript" src="app/js/services/profiles-service.js"></script>
+    <script type="text/javascript" src="app/js/services/facebook-service.js"></script>
+    <script type="text/javascript" src="app/js/controllers/login-controller.js"></script>
+    <script type="text/javascript" src="app/js/controllers/posts-controller.js"></script>
+    <script type="text/javascript" src="app/js/controllers/events-controller.js"></script>
+    <script type="text/javascript" src="app/js/controllers/profiles-controller.js"></script>
+    <script type="text/javascript" src="app/js/controllers/facebook-controller.js"></script>
+    <script type="text/javascript" src="app/js/sidenav.js"></script>
+  </head>
+
+  <body ng-app="socialcron" ng-controller="loginController">
+
+    <nav class="navbar-fixed hide-on-med-and-up blue-grey darken-4">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo"></a>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li ng-if="isAuthenticated()">
+            <a ng-click="logout()">Logout</a>
+          </li>
+        </ul>
+
+        <a href="" data-activates="slide-out" class="button-collapse collapse hide-on-med-and-down">
+          <i class="material-icons">menu</i>
+        </a>
+
+        <a href="" data-activates="slide-out-mobile" class="button-collapse collapse-mobile hide-on-large-only">
+          <i class="material-icons">menu</i>
+        </a>
+
+      </div>
+    </nav>
+
+    <ul id="slide-out" ng-if="isAuthenticated()" class="side-nav fixed">
+      <li>
+        <div class="userView">
+          <div class="background">
+          </div>
+          <a href="">
+            <span class="black-text name">{{getUsername()}}</span>
+          </a>
+          <a href="">
+            <span class="black-text email">{{getEmail()}}</span>
+          </a>
+        </div>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="subheader">
+          <i class="material-icons">assignment</i> Posts
+        </a>
+      </li>
+
+      <li>
+        <a href="/#!/newPost">New post</a>
+      </li>
+
+      <li>
+        <a href="/#!/postsList">Posts list</a>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="subheader">
+          <i class="material-icons">av_timer</i> Schedule
+        </a>
+      </li>
+
+      <li>
+        <a href="/#!/newEvent">Schedule a post</a>
+      </li>
+
+      <li>
+        <a href="/#!/eventsList">Events list</a>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="subheader">
+          <i class="material-icons">perm_identity</i> Profiles
+        </a>
+      </li>
+
+      <li>
+        <a href="/#!/newProfile">Add a profile</a>
+      </li>
+
+      <li>
+        <a href="/#!/profilesList">Profiles list</a>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="waves-effect" href="" ng-click="logout()">
+         <i class="material-icons">exit_to_app</i> Logout
+        </a>
+      </li>
+
+    </ul>
+
+    <ul id="slide-out-mobile" class="side-nav">
+      <li>
+        <div class="userView">
+          <div class="background">
+          </div>
+          <a href="">
+            <span class="black-text name">{{getUsername()}}</span>
+          </a>
+          <a href="">
+            <span class="black-text email">{{getEmail()}}</span>
+          </a>
+        </div>
+      </li>
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="subheader">
+          <i class="material-icons">assignment</i> Posts
+        </a>
+      </li>
+
+      <li>
+        <a href="/#!/newPost">New post</a>
+      </li>
+
+      <li>
+        <a href="/#!/postsList">Posts list</a>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="subheader">
+          <i class="material-icons">av_timer</i> Schedule
+        </a>
+      </li>
+
+      <li>
+        <a href="/#!/newEvent">Schedule a post</a>
+      </li>
+
+      <li>
+        <a href="/#!/eventsList">Events list</a>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="subheader">
+          <i class="material-icons">perm_identity</i> Profiles
+        </a>
+      </li>
+
+      <li>
+        <a href="/#!/newProfile">Add a profile</a>
+      </li>
+
+      <li>
+        <a href="/#!/profilesList">Profiles list</a>
+      </li>
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <a class="waves-effect" href="" ng-click="logout()">
+         <i class="material-icons">exit_to_app</i> Logout
+        </a>
+      </li>
+    </ul>
+
+    <section ng-view class="row"></section>
+
+  </body>
+
+</html>
