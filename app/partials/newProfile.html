@@ -1,0 +1,49 @@
+<header>
+  <nav class="top-nav blue-grey darken-4">
+    <div class="container">
+      <div class="nav-wrapper"><a class="page-title">Add profiles</a></div>
+    </div>
+  </nav>
+</header>
+
+<div class="row">
+
+  <br>
+
+  <div class="col s12 m6 offset-m4">
+    <button class="btn-large waves-effect waves-light blue darken-4" ng-click="login()">
+      Get Facebook profiles
+    </button>
+  </div>
+
+  <br>
+
+  <ul class="collection col s12 m7 offset-m4" ng-show="profiles.length > 0">
+    <form name="profilesForm" ng-submit="saveProfiles()">
+     
+      <li class="collection-item avatar" ng-repeat="profile in profiles">
+        <p class="col m2">
+          <input type="checkbox" ng-model="selectedProfiles[$index]" id="{{$index}}" />
+          <label for="{{$index}}"></label>
+        </p>
+
+        <p class="col m10">
+          <span class="title">{{profile.name}}</span>
+        </p>
+
+        <a class="secondary-content capitalize black-text">
+          {{profile.type}}
+        </a>
+      </li>
+
+      <br>
+
+      <div class="row">
+        <button type="submit" ng-class="{'disabled': profilesForm.$invalid}" class="btn waves-effect waves-light green">
+          <i class="material-icons right">send</i> Save
+        </button>
+      </div>
+    </form>
+  </ul>
+
+</div>

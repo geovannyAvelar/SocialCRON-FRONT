@@ -1,0 +1,30 @@
+<header>
+  <nav class="top-nav blue-grey darken-4">
+    <div class="container">
+      <div class="nav-wrapper"><a class="page-title">Profiles</a></div>
+    </div>
+  </nav>
+</header>
+
+<div class="row">
+
+  <table class="col s12 m7 offset-m4 striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Token</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="profile in profiles">
+        <td>{{profile.name}}</td>
+        <td>
+          <textarea class="materialize-textarea" disabled>{{profile.token}}</textarea>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+</div>
