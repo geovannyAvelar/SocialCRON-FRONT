@@ -1,0 +1,51 @@
+<header>
+  <nav class="top-nav blue-grey darken-4">
+    <div class="container">
+      <div class="nav-wrapper"><a class="page-title">Schedule a post</a></div>
+    </div>
+  </nav>
+</header>
+
+<div class="row">
+  <form name="eventForm" ng-submit="save()" class="col s12 m7 offset-m5">
+
+    <div class="row">
+      <p class="input-field col s12 m6">
+        <input type="datetime-local" ng-model="event.initialDate" id="initialDate" name="initialDate" required />
+      </p>
+    </div>
+
+    <div class="row">
+      <p class="input-field col s12 m6">
+        <input type="date" ng-model="event.limitDate" id="limitDate" name="limitDate" required />
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <select class="icons" ng-model="event.period" min="1" id="period" name="period" required>
+          <option disabled selected>Choose a period</option>
+          <option value="MINUTE">Minute</option>
+          <option value="HOUR">Hour</option>
+          <option value="DAY">Day</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12 m6">
+        <input type="number" ng-model="event.interval" min="1" id="interval" name="interval" required />
+        <label for="interval">
+          Interval
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <button type="submit" ng-class="{'disabled': eventForm.$invalid}" class="btn waves-effect waves-light green">
+        <i class="material-icons right">send</i> Save
+      </button>
+    </div>
+
+  </form>
+</div>
