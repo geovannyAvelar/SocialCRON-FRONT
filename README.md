@@ -1,4 +1,6 @@
 # SocialCRON-FRONT
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+
 SocialCRON is an open-source platform to schedule posts on social media sites
 
 ## Summary
@@ -31,3 +33,5 @@ SocialCRON is an open-source platform to schedule posts on social media sites
 
 ## 2 License
 This project is under The MIT License (MIT) terms.
+
+![CODE Plus](https://i1.wp.com/www.agenciacodeplus.com.br/wp-content/uploads/2017/03/cropped-logoOficial-1.png?w=200)
