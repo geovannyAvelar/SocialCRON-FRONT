@@ -18,7 +18,6 @@ app.controller('postsController', function($scope, $http, $location, PostService
         .then(function success(response) {
           $scope.drafts = response;
           $('.modal').modal(); //Setting up the modals
-          $scope.findAll();
         }, function error(response) {
           Materialize.toast('Cannot retrieve posts. Server error', 5000);
         });
@@ -30,6 +29,7 @@ app.controller('postsController', function($scope, $http, $location, PostService
         .deleteDraft($scope.selectedPost)
           .then(function success(response) {
             Materialize.toast('Post has been deleted', 3000);
+            $scope.findAll();
           }, function error() {
             Materialize.toast('Cannot delete post. Server error', 5000);
           });
