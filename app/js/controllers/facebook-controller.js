@@ -1,4 +1,4 @@
-app.controller('facebookController', function ($scope, ProfilesService, FacebookService) {
+app.controller('facebookController', function ($scope, $location, ProfilesService, FacebookService) {
   $scope.profiles = [];
   $scope.selectedProfiles = [];
 
@@ -40,7 +40,7 @@ app.controller('facebookController', function ($scope, ProfilesService, Facebook
         ProfilesService
           .saveProfile({"name": profile.name, "token": profile.token})
             .then(function () {
-              console.log("OK");
+              $location.path("/profilesList");
             });
       }
     }
