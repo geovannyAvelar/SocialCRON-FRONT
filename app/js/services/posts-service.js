@@ -4,7 +4,7 @@ app.service('PostService', function ($http, AuthService, BASE_URL) {
   postService.saveDraft = function (draft) {
     return $http({
       method: "POST",
-      url: BASE_URL + "/v1/drafts",
+      url: BASE_URL + "/v2/posts",
       headers: {
         "Authorization": "Bearer " + AuthService.getToken()
       },
@@ -19,7 +19,7 @@ app.service('PostService', function ($http, AuthService, BASE_URL) {
   postService.findAll = function() {
     return $http({
       method: "GET",
-      url: BASE_URL + "/v1/drafts/all",
+      url: BASE_URL + "/v2/posts/all",
       headers: {
         "Authorization": "Bearer " + AuthService.getToken()
       }
@@ -33,7 +33,7 @@ app.service('PostService', function ($http, AuthService, BASE_URL) {
   postService.deleteDraft = function (id) {
     return $http({
       method: "DELETE",
-      url: BASE_URL + "/v1/drafts/" + id,
+      url: BASE_URL + "/v2/posts/" + id,
       headers: {
         "Authorization": "Bearer " + AuthService.getToken()
       }

@@ -1,5 +1,15 @@
-.login-container {
-  height: 28.5em;
+#calendarModal {
+  height: 85% !important; 
+  max-height: 100% !important; 
+  overflow-y: auto !important;
+}
+
+.clearfix:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility: hidden;
 }
 
 .capitalize {

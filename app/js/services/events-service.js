@@ -16,7 +16,7 @@ app.service('EventsService', function($http, AuthService, BASE_URL) {
     });
   };
 
-    postService.findAll = function() {
+  eventsService.findAll = function() {
     return $http({
       method: "GET",
       url: BASE_URL + "/v1/events/all",
@@ -30,7 +30,7 @@ app.service('EventsService', function($http, AuthService, BASE_URL) {
     });
   };
 
-  postService.delete = function (id) {
+  eventsService.delete = function (id) {
     return $http({
       method: "DELETE",
       url: BASE_URL + "/v1/events/" + id,

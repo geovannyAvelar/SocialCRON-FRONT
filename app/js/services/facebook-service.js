@@ -40,7 +40,7 @@ app.service('FacebookService', function($facebook) {
                       "type": "page"
                     });
 
-          return pages;  
+          return pages;
         }
       });
 
@@ -53,4 +53,5 @@ app.service('FacebookService', function($facebook) {
   };
 
   return facebookService;
+  
 });

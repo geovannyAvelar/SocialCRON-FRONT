@@ -1,5 +1,5 @@
 var app = angular.module('socialcron', ['ngCookies', 'ngRoute', 'ui.calendar', 'ngFacebook']);
-app.constant('BASE_URL', 'http://138.197.105.148:8080');
+app.constant('BASE_URL', 'http://138.197.105.148:5756');
 
 app.config(function ($routeProvider, $httpProvider, $facebookProvider) {
 
@@ -32,7 +32,7 @@ app.config(function ($routeProvider, $httpProvider, $facebookProvider) {
     })
     .when("/newEvent", {
       templateUrl: 'app/partials/newEvent.html',
-      controller: 'eventsController'
+      controller: 'schedulesController'
     })
     .when("/newProfile", {
       templateUrl: 'app/partials/newProfile.html',
