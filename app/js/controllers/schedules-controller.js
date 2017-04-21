@@ -1,8 +1,7 @@
-app.controller('schedulesController', function($scope, EventsService, PostService, 
+app.controller('schedulesController', function($scope, $location, EventsService, PostService,
                                             ProfilesService, SchedulesService, uiCalendarConfig) {
   $scope.periods = [{"name": "HOUR"}, {"name": "DAY"}, {"name": "WEEK"}];
-  $scope.event = { 'initialDate': new Date(), 
-                   'limitDate': new Date(), 
+  $scope.event = { 'limitDate': new Date(), 
                    'interval': 1, 
                    'period': $scope.periods[0]};
   $scope.eventSources = [[]];
@@ -17,32 +16,50 @@ app.controller('schedulesController', function($scope, EventsService, PostServic
   };
 
   $scope.save = function() {
+    
+    $scope.eventToSave = {}
+
+    if($scope.repeat) {
+      $scope.eventToSave.limitDate = moment($scope.event.limitDate).format("YYYY-MM-DDTHH:mmZZ");
+      $scope.eventToSave.interval = $scope.event.interval;
+      $scope.eventToSave.period = $scope.event.period.name;
+    }
+
+    $scope.eventToSave.initialDate = moment($scope.event.initialDate).format("YYYY-MM-DDTHH:mmZZ");
+    $scope.eventToSave.post = $scope.post;
+    $scope.eventToSave.profile = $scope.event.profile;
+    console.log($scope.eventToSave);
+
     EventsService
-      .save($scope.event)
+      .save($scope.eventToSave)
         .then(function(response) {
           $location.path("/eventsList");
+          $scope.findAll();
+          $("#eventForm").modal('close');
           Materialize.toast('Event has been saved', 3000);
-        }, function error(response) {
-          Materialize.toast('Cannot save event. Server error', 5000);
+        }, function error() {
+           Materialize.toast('Cannot save event. Server error', 5000);
         });
   };
 
   $scope.findAll = function () {
-    EventsService.findAll()
-      .then(function success(response) {
-        $scope.events = response;
-      }, function error(response) {
-        Materialize.toast('Cannot retrieve events. Server error', 5000);
-      });
+    EventsService
+      .findAll()
+        .then(function success(response) {
+          $scope.events = response;
+        }, function error(response) {
+          Materialize.toast('Cannot retrieve events. Server error', 5000);
+        });
   };
 
   $scope.findSchedulesByPost = function() {
-    if($scope.selectedPost !== undefined) {
-      ScheduleService
-        .findByPost($scope.selectedPost)
+    if($scope.selectedPostId !== undefined) {
+      SchedulesService
+        .findByPost($scope.selectedPostId)
           .then(function success(response) {
             for(var i = 0; i < response.length; i++) {
               var schedule = response[i];
+              console.log(schedule);
             }
           }, function error() {
             Materialize.toast('Cannot retrieve posts. Server error', 5000);
@@ -53,13 +70,14 @@ app.controller('schedulesController', function($scope, EventsService, PostServic
   };
 
   $scope.delete = function () {
-    if ($scope.drafts.length > 0 && $scope.selectedPost !== undefined) {
-      EventsService.delete($scope.selectedEvent)
-        .then(function success(response) {
-          Materialize.toast('Event has been deleted', 3000);
-        }, function error() {
-          Materialize.toast('Cannot delete events. Server error', 5000);
-        });
+    if ($scope.drafts.length > 0 && $scope.selectedPostId !== undefined) {
+      PostsService
+        .delete($scope.selectedPostId)
+          .then(function success(response) {
+            Materialize.toast('Event has been deleted', 3000);
+          }, function error() {
+            Materialize.toast('Cannot delete events. Server error', 5000);
+          });
     } else {
       Materialize.toast('You need to select a event before delete', 5000);
     }
@@ -89,7 +107,13 @@ app.controller('schedulesController', function($scope, EventsService, PostServic
   };
 
   $scope.setSelectedPost = function(id) {
-    $scope.selectedPost = id;
+    $scope.selectedPostId = id;
+
+    PostService
+      .findOne($scope.selectedPostId)
+        .then(function(response) {
+          $scope.post = response;
+        });
   };
 
   $scope.dayClick = function (date, allDay, jsEvent, view) {
