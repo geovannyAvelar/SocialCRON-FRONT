@@ -11,15 +11,12 @@ var jsFilesToMove = [
   'bower_components/fullcalendar/dist/fullcalendar.min.js',
   'bower_components/moment/fullcalendar.min.js',
   'bower_components/materialize/dist/js/materialize.min.js',
-  'bower_components/moment/min/moment-with-locales.min.js',
-  'bower_components/dropzone/dist/min/dropzone.min.js'
+  'bower_components/moment/min/moment-with-locales.min.js'
 ];
  
 var cssFilesToMove = [
   'bower_components/fullcalendar/dist/fullcalendar.min.css',
-  'bower_components/materialize/dist/css/materialize.min.css',
-  'bower_components/dropzone/dist/min/dropzone.min.css',
-  'bower_components/dropzone/dist/min/basic.min.css'
+  'bower_components/materialize/dist/css/materialize.min.css'
 ];
  
 var fontsFilesToMove = [
