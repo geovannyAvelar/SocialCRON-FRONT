@@ -3,13 +3,17 @@ app.controller('postsController', function($scope, $http, $location, PostService
   var uploader = new Dropzone('#upload-widget', {});
 
   $scope.saveDraft = function() {
+    $scope.loading = true;
+
     PostService
       .saveDraft($scope.draft)
         .then(function success() {
           $scope.resetDraftModel();
           $location.path("/postsList");
+          $scope.loading = false;
           Materialize.toast('Post has been saved', 3000);
         }, function error() {
+          $scope.loading = false;
           Materialize.toast('Cannot save post. Server error', 5000);
         });
   };
