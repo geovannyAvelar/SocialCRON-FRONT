@@ -1,5 +1,7 @@
 app.controller('postsController', function($scope, $http, $location, PostService) {
  
+  var uploader = new Dropzone('#upload-widget', {});
+
   $scope.saveDraft = function() {
     PostService
       .saveDraft($scope.draft)

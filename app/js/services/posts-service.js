@@ -25,7 +25,21 @@ app.service('PostService', function ($http, AuthService, BASE_URL) {
       }
     }).then(function success(response) {
       return response.data;
-    }, function error(success) {
+    }, function error(response) {
+      return [];
+    });
+  };
+
+  postService.findOne = function(id) {
+    return $http({
+      method: "GET",
+      url: BASE_URL + "/v2/posts/" + id,
+      headers: {
+        "Authorization": "Bearer " + AuthService.getToken()
+      }
+    }).then(function success(response) {
+      return response.data;
+    }, function error(response) {
       return [];
     });
   };
