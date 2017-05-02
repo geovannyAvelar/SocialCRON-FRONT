@@ -38,11 +38,26 @@
 
       <br>
 
-      <div class="row">
-        <button type="submit" ng-class="{'disabled': profilesForm.$invalid}" class="btn waves-effect waves-light green">
+      <div ng-if="!loading" class="row">
+        <button type="submit" ng-class="{'disabled': isSelectedProfilesEmpty()}" class="btn waves-effect waves-light green">
           <i class="material-icons right">send</i> Save
         </button>
       </div>
+
+      <div ng-if="loading" class="preloader-wrapper active">
+        <div class="spinner-layer spinner-green-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+
     </form>
   </ul>
 

@@ -6,9 +6,13 @@
   </nav>
 </header>
 
+<div ng-if="loading" class="progress">
+  <div class="indeterminate"></div>
+</div>
+
 <div class="row">
 
-  <table class="col s12 m7 offset-m4 striped">
+  <table ng-if="!loading" class="col s12 m7 offset-m4 striped">
     <thead>
       <tr>
         <th>Name</th>

@@ -7,7 +7,11 @@
 </header>
 
 <div class="row">
-   <ul id="listPosts" class="collapsible popout col s12 m7 offset-m4" data-collapsible="accordion">
+  <div ng-if="loading" class="progress">
+    <div class="indeterminate"></div>
+  </div>
+
+  <ul id="listPosts" class="collapsible popout col s12 m7 offset-m4" data-collapsible="accordion">
 
     <li ng-repeat="post in posts">
       <div class="collapsible-header" ng-click="setSelectedPost(post.id)">
@@ -21,8 +25,7 @@
             <i class="material-icons">schedule</i>
           </a>
 
-          <a data-target="calendarModal" ng-click="findSchedulesByPost()" 
-              class="btn btn-floating btn-small waves-effect waves-light blue">
+          <a data-target="calendarModal" ng-click="findSchedulesByPost()" class="btn btn-floating btn-small waves-effect waves-light blue">
             <i class="material-icons">date_range</i>
           </a>
         </p>
@@ -60,10 +63,8 @@
         <div class="input-field col s12 m8">
           <p ng-if="profiles.length == 0">There is no profiles</p>
 
-          <select ng-if="profiles.length > 0"
-                  ng-model="event.profile"
-                  ng-options="profile.name for profile in profiles track by profile.id"
-                  id="profile" name="profile" class="browser-default">
+          <select ng-if="profiles.length > 0" ng-model="event.profile" ng-options="profile.name for profile in profiles track by profile.id"
+            id="profile" name="profile" class="browser-default">
           </select>
         </div>
       </div>
@@ -101,10 +102,8 @@
               <input type="range" ng-model="event.interval" name="interval" id="interval" min="1" max="60" />
             </p>
 
-            <select class="col s12 m4 right browser-default" 
-                    ng-model="event.period"
-                    ng-options="period.name for period in periods track by period.name"
-                    id="period" name="period">
+            <select class="col s12 m4 right browser-default" ng-model="event.period" ng-options="period.name for period in periods track by period.name"
+              id="period" name="period">
             </select>
           </div>
         </div>
@@ -122,7 +121,6 @@
 <div id="calendarModal" class="modal bottom-sheet">
   <div class="modal-content">
     <h4>Schedule</h4>
-    <div class="calendar" ng-model="eventSources" 
-          calendar="calendar" ui-calendar="uiConfig.calendar"></div>
+    <div class="calendar" ng-model="eventSources" calendar="calendar" ui-calendar="uiConfig.calendar"></div>
   </div>
 </div>

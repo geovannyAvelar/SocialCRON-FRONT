@@ -16,7 +16,7 @@ app.controller('schedulesController', function($scope, $location, EventsService,
   };
 
   $scope.save = function() {
-    
+    $scope.loading = true;
     $scope.eventToSave = {}
 
     if($scope.repeat) {
@@ -36,18 +36,24 @@ app.controller('schedulesController', function($scope, $location, EventsService,
           $location.path("/eventsList");
           $scope.findAll();
           $("#eventForm").modal('close');
+          $scope.loading = false;
           Materialize.toast('Event has been saved', 3000);
         }, function error() {
+           $scope.loading = false;
            Materialize.toast('Cannot save event. Server error', 5000);
         });
   };
 
   $scope.findAll = function () {
+    $scope.loading = true;
+
     EventsService
       .findAll()
         .then(function success(response) {
           $scope.events = response;
+          $scope.loading = false;
         }, function error(response) {
+          $scope.loading = false;
           Materialize.toast('Cannot retrieve events. Server error', 5000);
         });
   };
@@ -59,7 +65,6 @@ app.controller('schedulesController', function($scope, $location, EventsService,
           .then(function success(response) {
             for(var i = 0; i < response.length; i++) {
               var schedule = response[i];
-              console.log(schedule);
             }
           }, function error() {
             Materialize.toast('Cannot retrieve posts. Server error', 5000);

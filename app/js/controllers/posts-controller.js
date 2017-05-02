@@ -17,12 +17,16 @@ app.controller('postsController', function($scope, $http, $location, PostService
   };
 
   $scope.findAll = function() {
+    $scope.loading = true;
+
     PostService
       .findAll()
         .then(function success(response) {
           $scope.drafts = response;
+          $scope.loading = false;
           $('.modal').modal(); //Setting up the modals
         }, function error(response) {
+          $scope.loading = false;
           Materialize.toast('Cannot retrieve posts. Server error', 5000);
         });
   };

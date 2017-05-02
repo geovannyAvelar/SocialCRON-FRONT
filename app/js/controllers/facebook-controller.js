@@ -31,6 +31,8 @@ app.controller('facebookController', function ($scope, $location, ProfilesServic
   };
 
   $scope.saveProfiles = function() {
+    $scope.loading = true;
+
     for(var i = 0; i < $scope.selectedProfiles.length; i++) {
       var selected = $scope.selectedProfiles[i];
 
@@ -40,10 +42,32 @@ app.controller('facebookController', function ($scope, $location, ProfilesServic
         ProfilesService
           .saveProfile({"profileId": profile.id, "name": profile.name, "token": profile.token})
             .then(function () {
+              $scope.loading = false;
               $location.path("/profilesList");
+              Materialize.toast('Profile has been saved', 3000);
+            }, function error() {
+              $scope.loading = false;
+              Materialize.toast('Cannot save post. Server error', 5000);
             });
       }
     }
+  };
+
+  $scope.isSelectedProfilesEmpty = function() {
+    if($scope.selectedProfiles.length == 0) {
+      return true;
+    }
+
+    for(var i = 0; i < $scope.selectedProfiles.length; i++) {
+      var selected = $scope.selectedProfiles[i];
+
+      if(selected) {
+        return false;
+      }
+    }
+
+    return true;
+
   };
 
 });

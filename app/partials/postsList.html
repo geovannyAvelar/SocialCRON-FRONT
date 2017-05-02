@@ -7,7 +7,25 @@
 </header>
 
 <div class="row">
-  <ul ng-repeat="draft in drafts" class="collection col s12 m7 offset-m4">
+  <div ng-if="loading" class="progress">
+    <div class="indeterminate"></div>
+  </div>
+
+  <div ng-if="drafts.length < 1" class="row">
+    <div class="col s12 m4 offset-m5">
+      <div class="card grey lighten-5">
+        <div class="card-content dark-text">
+          <span class="card-title">There is no posts to show</span>
+          <p></p>
+        </div>
+        <div class="card-action">
+          <a href="/#!/newPost" class="black-text">Create one</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ul ng-if="drafts.length > 0" ng-repeat="draft in drafts" class="collection col s12 m7 offset-m4">
     <li class="collection-item avatar">
       <span class="title">{{draft.title}}</span>
       <p class="right">
