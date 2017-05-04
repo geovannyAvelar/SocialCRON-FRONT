@@ -1,10 +1,9 @@
 app.controller('schedulesController', function($scope, $location, EventsService, PostService,
-                                            ProfilesService, SchedulesService, uiCalendarConfig) {
+                                                ProfilesService, SchedulesService) {
   $scope.periods = [{"name": "HOUR"}, {"name": "DAY"}, {"name": "WEEK"}];
   $scope.event = { 'limitDate': new Date(), 
                    'interval': 1, 
                    'period': $scope.periods[0]};
-  $scope.eventSources = [[]];
   $scope.repeat = false;
  
   $scope.init = function() {
@@ -120,55 +119,5 @@ app.controller('schedulesController', function($scope, $location, EventsService,
           $scope.post = response;
         });
   };
-
-  $scope.dayClick = function (date, allDay, jsEvent, view) {
-    console.log("Click!");
-  };
-
-  $scope.alertOnDrop = function (event, dayDelta, minuteDelta, allDay,
-                                 revertFunc, jsEvent, ui, view) {
-
-  };
-
-  $scope.alertOnResize = function (event, dayDelta, minuteDelta, revertFunc, jsEvent, ui, view) {
-
-  };
-
-  $scope.eventClick = function (event) {
-    console.log("Click!");
-  };
-
-  $scope.renderView = function (view) {
-    var date = new Date(view.calendar.getDate());
-    $scope.currentDate = date.toDateString();
-  };
-
-  $scope.changeView = function (view, calendar) {
-    currentView = view;
-    calendar.fullCalendar('changeView', view);
-  };
-
-  $scope.reRenderCalender = function (calendar) {
-    if (uiCalendarConfig.calendars[calendar]) {
-      uiCalendarConfig.calendars[calendar].fullCalendar('refetchEvents');
-    }
-  };
-
-  $scope.uiConfig = {
-    calendar: {
-      height: 450,
-      editable: true,
-      header: {
-        left: 'title',
-        center: '',
-        right: 'today prev,next'
-      },
-      dayClick: $scope.dayClick,
-      eventDrop: $scope.alertOnDrop,
-      eventResize: $scope.alertOnResize,
-      eventClick: $scope.eventClick,
-      viewRender: $scope.renderView
-    }
-  };
-
+  
 });
