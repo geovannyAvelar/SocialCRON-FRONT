@@ -26,6 +26,10 @@ app.controller("loginController", function($scope, $rootScope, $cookies, $locati
   $scope.getEmail = function() {
     return AuthService.getEmail();
   };
+
+  $scope.getAvatar = function() {
+    return AuthService.getAvatar();
+  };
  
   $scope.logout = function() {
     AuthService

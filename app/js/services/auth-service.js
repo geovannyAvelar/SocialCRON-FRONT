@@ -19,8 +19,10 @@ app.service('AuthService', function($http, Session, BASE_URL) {
         params: credentials
       })
       .then(function(response) {
+        console.log(response);
         Session.saveUsername(response.data.name);
         Session.saveEmail(response.data.email);
+        Session.saveAvatar(response.data.avatar);
       });
 
       return token;
@@ -45,6 +47,10 @@ app.service('AuthService', function($http, Session, BASE_URL) {
 
   authService.getEmail = function() {
     return Session.getEmail();
+  };
+
+  authService.getAvatar = function() {
+    return Session.getAvatar();
   };
  
   authService.logout = function() {

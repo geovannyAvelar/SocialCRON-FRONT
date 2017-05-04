@@ -24,11 +24,20 @@ app.service('Session', function($cookies) {
   session.getEmail = function() {
     return $cookies.get('email');
   };
+
+  session.saveAvatar = function(avatar) {
+    $cookies.put('avatar', avatar);
+  };
+
+  session.getAvatar = function() {
+    return $cookies.get('avatar');
+  };
  
   session.destroy = function() {
     $cookies.remove('token');
     $cookies.remove('username');
     $cookies.remove('email');
+    $cookies.remove('avatar');
   };
  
   return session;
