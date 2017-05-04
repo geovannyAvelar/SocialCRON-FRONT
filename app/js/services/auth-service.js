@@ -68,9 +68,16 @@ app.service('AuthService', function($http, Session, BASE_URL) {
 
 app.run(function($rootScope, $location, AuthService) {
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
+
+
       // Redirect the user to login if there is no session
       if(!AuthService.isAuthenticated() && next.loadedTemplateUrl != "app/partials/login.html") {
         $location.path("/");
       }
+
+      if(AuthService.isAuthenticated() && next.loadedTemplateUrl != "app/partials/login.html") {
+        $location.path("/newPost");
+      }
+
     });
  })
