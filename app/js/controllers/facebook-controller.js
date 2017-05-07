@@ -38,9 +38,15 @@ app.controller('facebookController', function ($scope, $location, ProfilesServic
 
       if(selected) {
         var profile = $scope.profiles[i];
-        
+        var profileToSave = {
+                              "profileId": profile.id, 
+                              "name": profile.name, 
+                              "token": profile.token,
+                              "expires": moment().format('x')
+                            }
+
         ProfilesService
-          .saveProfile({"profileId": profile.id, "name": profile.name, "token": profile.token})
+          .saveProfile(profileToSave)
             .then(function () {
               $scope.loading = false;
               $location.path("/profilesList");

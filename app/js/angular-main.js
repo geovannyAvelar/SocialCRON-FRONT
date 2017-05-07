@@ -1,5 +1,6 @@
 var app = angular.module('socialcron', ['ngCookies', 'ngRoute', 'ngFacebook']);
-app.constant('BASE_URL', 'http://api.socialcron.com.br:5756');
+//app.constant('BASE_URL', 'http://api.socialcron.com.br:5756');
+app.constant('BASE_URL', 'http://localhost:8080');
 
 app.config(function ($routeProvider, $httpProvider, $facebookProvider) {
 

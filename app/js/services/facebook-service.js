@@ -15,8 +15,8 @@ app.service('FacebookService', function($facebook) {
       .then(function success(response) {
         return {
                 "id": response['id'],
-                "name": response['name'], 
-                "token": $facebook.getAuthResponse()['accessToken'], 
+                "name": response['name'],
+                "token": $facebook.getAuthResponse()['accessToken'],
                 "type": "user"
                };
       }, function error(response) {
@@ -44,12 +44,6 @@ app.service('FacebookService', function($facebook) {
         }
       });
 
-  };
-
-  facebookService.saveProfiles = function(profiles) {
-    for(var i = 0; i < profiles.length; i++) {
-      
-    }
   };
 
   return facebookService;
