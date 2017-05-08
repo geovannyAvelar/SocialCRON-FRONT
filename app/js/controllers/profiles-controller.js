@@ -10,8 +10,8 @@ app.controller('profilesController', function($scope, ProfilesService) {
 
           for(var i = 0; i < $scope.profiles.length; i++) {
             var profile = $scope.profiles[i];
-            profile.expires = moment.unix(profile.expires).format("dddd, MMMM Do YYYY, h:mm:ss a");
-            $scope.profiles[i] = profile;
+            $scope.profiles[i].createdAt = moment(profile.createdAt).format("LLLL"); 
+            $scope.profiles[i].expires = moment(profile.expires).format("LLLL"); 
           }
 
           $scope.loading = false;

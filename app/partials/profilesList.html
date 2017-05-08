@@ -12,11 +12,12 @@
 
 <div class="row">
 
-  <table ng-if="!loading" class="col s12 m7 offset-m4 responsive-table highlight">
+  <table ng-if="!loading" class="col s12 m8 offset-m3 responsive-table highlight">
     <thead>
       <tr>
         <th>Name</th>
         <th>Token</th>
+        <th>Created at</th>
         <th>Expires at</th>
       </tr>
     </thead>
@@ -27,6 +28,7 @@
         <td>
           <textarea class="materialize-textarea" disabled>{{profile.token}}</textarea>
         </td>
+        <td>{{profile.createdAt}}</td>
         <td>{{profile.expires}}</td>
       </tr>
     </tbody>

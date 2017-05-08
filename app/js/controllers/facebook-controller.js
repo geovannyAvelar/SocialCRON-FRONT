@@ -42,7 +42,7 @@ app.controller('facebookController', function ($scope, $location, ProfilesServic
                               "profileId": profile.id, 
                               "name": profile.name, 
                               "token": profile.token,
-                              "expires": moment().format('x')
+                              "createdAt": moment().format("YYYY-MM-DDTHH:mmZZ")
                             }
 
         ProfilesService
