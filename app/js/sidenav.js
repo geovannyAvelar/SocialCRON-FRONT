@@ -1,10 +1,5 @@
 $(document).ready(function() {
-    $('.collapse').sideNav({
-      menuWidth: 300,
-      edge: 'left',
-      closeOnClick: false,
-    });
-
+    console.log($(".collapse-mobile"));
     $('.collapse-mobile').sideNav({
       menuWidth: 300,
       edge: 'left',

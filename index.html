@@ -36,7 +36,7 @@
 
   <body ng-app="socialcron" ng-controller="loginController">
 
-    <nav class="navbar-fixed hide-on-med-and-up blue-grey darken-4" ng-if="isAuthenticated()">
+    <nav class="navbar-fixed hide-on-med-and-up blue-grey darken-4" ng-show="isAuthenticated()">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo"></a>
 
@@ -45,10 +45,6 @@
             <a ng-click="logout()">Logout</a>
           </li>
         </ul>
-
-        <a href="" data-activates="slide-out" class="button-collapse collapse hide-on-med-and-down">
-          <i class="material-icons">menu</i>
-        </a>
 
         <a href="" data-activates="slide-out-mobile" class="button-collapse collapse-mobile hide-on-large-only">
           <i class="material-icons">menu</i>
@@ -137,7 +133,7 @@
 
     </ul>
 
-    <ul id="slide-out-mobile" ng-if="isAuthenticated()" class="side-nav">
+    <ul id="slide-out-mobile" ng-show="isAuthenticated()" class="side-nav">
       <li>
         <div class="userView">
           <div class="background">
