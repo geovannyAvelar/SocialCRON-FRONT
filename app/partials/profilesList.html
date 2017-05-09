@@ -18,6 +18,7 @@
         <th>Name</th>
         <th>Created at</th>
         <th>Expires at</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -26,9 +27,32 @@
         <td>{{profile.name}}</td>
         <td>{{profile.createdAt}}</td>
         <td>{{profile.expires}}</td>
+        <td>
+          <a data-target="deleteProfileModal" 
+             class="btn btn-floating btn-small waves-effect waves-light red"
+             ng-click="setSelectedProfile(profile.id)">
+            <i class="material-icons">delete_forever</i>
+          </a>
+        </td>
       </tr>
     </tbody>
 
   </table>
 
+</div>
+
+<!-- DELETE PROFILE MODAL -->
+<div id="deleteProfileModal" class="modal">
+  <div class="modal-content">
+    <h4>Delete a profile</h4>
+    <p>This profile will be deleted permanently</p>
+  </div>
+  <div class="modal-footer">
+    <a ng-click="deleteProfile()" class="modal-action modal-close waves-effect waves-green btn-flat">
+      Yes, delete this profile
+    </a>
+    <a class="modal-action modal-close waves-effect waves-red btn-flat">
+      No, cancel this action
+    </a>
+  </div>
 </div>
