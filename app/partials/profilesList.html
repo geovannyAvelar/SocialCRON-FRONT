@@ -16,7 +16,6 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Token</th>
         <th>Created at</th>
         <th>Expires at</th>
       </tr>
@@ -25,9 +24,6 @@
     <tbody>
       <tr ng-repeat="profile in profiles">
         <td>{{profile.name}}</td>
-        <td>
-          <textarea class="materialize-textarea" disabled>{{profile.token}}</textarea>
-        </td>
         <td>{{profile.createdAt}}</td>
         <td>{{profile.expires}}</td>
       </tr>
