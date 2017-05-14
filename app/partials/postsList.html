@@ -25,16 +25,26 @@
     </div>
   </div>
 
-  <ul ng-if="drafts.length > 0" ng-repeat="draft in drafts" class="collection col s12 m7 offset-m4">
+  <ul ng-if="drafts.length > 0" ng-repeat="draft in drafts" 
+      class="collection col s12 m7 offset-m4">
     <li class="collection-item avatar">
       <span class="title">{{draft.title}}</span>
       <p class="right">
-        <a data-target="deletePostModal" data-position="bottom" data-delay="50" data-tooltip="Delete post" class="btn btn-floating btn-small waves-effect waves-light red"
-          ng-click="setSelectedPost(draft.id)">
+        <a data-target="uploadPhotoModal"
+           class="btn btn-floating btn-small waves-effect waves-light blue"
+           ng-click="setSelectedPost(draft.id)">
+          <i class="material-icons">insert_photo</i>
+        </a>
+        <a data-target="deletePostModal" 
+           class="btn btn-floating btn-small waves-effect waves-light red"
+           ng-click="setSelectedPost(draft.id)">
           <i class="material-icons">delete_forever</i>
         </a>
       </p>
       <p>{{draft.content}}</p>
+      <p>
+        <a data-target="photoModal" ng-click="setSelectedPost(draft.id);findAllPhotos();">Show images</a>
+      </p>
     </li>
   </ul>
 </div>
@@ -52,5 +62,59 @@
     <a class="modal-action modal-close waves-effect waves-red btn-flat">
       No, cancel this action
     </a>
+  </div>
+</div>
+
+<!-- UPLOAD PHOTO MODAL -->
+<div id="uploadPhotoModal" class="modal">
+  
+  <form ng-submit="addPhoto()" name="imageForm">
+    <div class="modal-content">
+      <h4>Add a photo</h4>
+
+      <div ng-if="imageUploading" class="progress">
+        <div class="indeterminate"></div>
+      </div>
+
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Image</span>
+          <input ng-model="image" valid-file ng-required="true" ngf-select
+                 ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="10MB"
+                 type="file" id="image" name="image">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit"
+              class="btn btn-small waves-effect waves-light green" 
+              ng-disabled="imageForm.$invalid">
+        Save
+      </button>
+
+      <a class="modal-action modal-close btn-flat">
+        Cancel
+      </a>
+    </div>
+  </form>
+
+</div>
+
+<!-- PHOTO MODAL -->
+<div id="photoModal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>Photos</h4>
+
+    <div class="row">
+      <div class="col s4" ng-repeat="image in images track by $index">
+        <img class="materialboxed" width="200" ng-src="data:image/*;base64,{{image}}">
+      </div>
+    </div>
+    
   </div>
 </div>

@@ -1,5 +1,6 @@
 app.controller('postsController', function($scope, $http, $location, PostService) {
- 
+  $scope.images = [];
+
   $scope.saveDraft = function() {
     $scope.loading = true;
 
@@ -45,7 +46,49 @@ app.controller('postsController', function($scope, $http, $location, PostService
       Materialize.toast('You need to select a post before delete', 5000);
     }
   };
- 
+
+  $scope.addPhoto = function() {
+    if($scope.drafts.length > 0 && $scope.selectedPost !== undefined) {
+      $scope.imageUploading = true;
+
+      PostService
+        .addPhoto($scope.selectedPost, $scope.image)
+          .then(function success(response) {
+            Materialize.toast('Photo has been uploaded', 3000);
+            $scope.findAllPhotos();
+            $('#uploadPhotoModal').modal('close');
+            $scope.imageUploading = false;
+          }, function error() {
+            Materialize.toast('Cannot upload photo. Server error', 5000);
+            $scope.imageUploading = false;
+          });
+    }
+  };
+
+  $scope.findAllPhotos = function() {
+    if($scope.drafts.length > 0 && $scope.selectedPost !== undefined) {
+      $scope.images = [];
+
+      PostService
+        .findAllPhotos($scope.selectedPost)
+          .then(function success(response) {
+            for(var i in response) {
+              var photo = response[i];
+
+              PostService
+                .findPhoto(photo[photo.length - 1])
+                  .then(function success(image) {
+                    if(image != undefined && image != "") {
+                      $scope.images.push(image);
+                      setTimeout(function(){ $('.materialboxed').materialbox(); }, 1000);
+                    }
+                });
+            }
+
+          });
+    }
+  };
+
   $scope.resetDraftModel = function() {
     $scope.draft = undefined;
     $scope.draftForm.$setUntouched();
