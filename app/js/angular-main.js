@@ -1,6 +1,6 @@
 var app = angular.module('socialcron', ['ngCookies', 'ngRoute', 'ngFacebook', 'ngFileUpload']);
-//app.constant('BASE_URL', 'http://api.socialcron.com.br:5756');
-app.constant('BASE_URL', 'http://localhost:8080');
+app.constant('BASE_URL', 'http://api.socialcron.com.br:5756');
+
 app.directive('validFile',function(){
   return {
     require:'ngModel',
