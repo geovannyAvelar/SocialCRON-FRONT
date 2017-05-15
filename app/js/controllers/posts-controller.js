@@ -1,4 +1,5 @@
 app.controller('postsController', function($scope, $http, $location, PostService) {
+  $scope.imageUploading = false;
 
   $scope.saveDraft = function() {
     $scope.loading = true;

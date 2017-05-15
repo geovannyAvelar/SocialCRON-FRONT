@@ -93,11 +93,11 @@
     <div class="modal-footer">
       <button type="submit"
               class="btn btn-small waves-effect waves-light green" 
-              ng-disabled="imageForm.$invalid">
+              ng-disabled="imageForm.$invalid || imageUploading">
         Save
       </button>
 
-      <a class="modal-action modal-close btn-flat">
+      <a class="modal-action modal-close btn-flat" ng-disabled="imageUploading">
         Cancel
       </a>
     </div>
