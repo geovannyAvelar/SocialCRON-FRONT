@@ -216,7 +216,7 @@
 
     <section ng-view class="row"></section>
 
-    <footer class="page-footer transparent" ng-if="!isAuthenticated()">
+    <footer class="page-footer transparent" ng-hide="isAuthenticated()">
       <div class="container">
         <div class="row">
           <div class="col s8 offset-s4 m8 offset-m3">

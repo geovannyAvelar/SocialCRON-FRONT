@@ -1,5 +1,4 @@
 app.controller('postsController', function($scope, $http, $location, PostService) {
-  $scope.images = [];
 
   $scope.saveDraft = function() {
     $scope.loading = true;
@@ -67,24 +66,11 @@ app.controller('postsController', function($scope, $http, $location, PostService
 
   $scope.findAllPhotos = function() {
     if($scope.drafts.length > 0 && $scope.selectedPost !== undefined) {
-      $scope.images = [];
-
       PostService
         .findAllPhotos($scope.selectedPost)
           .then(function success(response) {
-            for(var i in response) {
-              var photo = response[i];
-
-              PostService
-                .findPhoto(photo[photo.length - 1])
-                  .then(function success(image) {
-                    if(image != undefined && image != "") {
-                      $scope.images.push(image);
-                      setTimeout(function(){ $('.materialboxed').materialbox(); }, 1000);
-                    }
-                });
-            }
-
+            $scope.images = response;
+            setTimeout(function(){ $('.materialboxed').materialbox(); }, 1000);
           });
     }
   };

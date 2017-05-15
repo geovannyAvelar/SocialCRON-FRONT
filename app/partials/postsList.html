@@ -43,7 +43,7 @@
       </p>
       <p>{{draft.content}}</p>
       <p>
-        <a data-target="photoModal" ng-click="setSelectedPost(draft.id);findAllPhotos();">Show images</a>
+        <a data-target="photoModal" href="" ng-click="setSelectedPost(draft.id);findAllPhotos();">Show images</a>
       </p>
     </li>
   </ul>
@@ -110,9 +110,13 @@
   <div class="modal-content">
     <h4>Photos</h4>
 
-    <div class="row">
-      <div class="col s4" ng-repeat="image in images track by $index">
-        <img class="materialboxed" width="200" ng-src="data:image/*;base64,{{image}}">
+    <div class="col m4 offset-m5 s12" ng-if="images.length == 0">
+      <p>There is no images to show</p>
+    </div>
+
+    <div class="row" ng-if="images.length > 0">
+      <div class="col m4 s12" ng-repeat="image in images">
+        <img class="materialboxed" width="200" ng-src="data:image/*;base64,{{image.base64Image}}">
       </div>
     </div>
     
