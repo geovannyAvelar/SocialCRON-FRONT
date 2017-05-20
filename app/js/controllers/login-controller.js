@@ -1,4 +1,6 @@
-app.controller("loginController", function($scope, $rootScope, $cookies, $location, AuthService) {
+app.controller("loginController", function($scope, $rootScope, $cookies, 
+                                           $location, $interval, AuthService) {
+  
   $scope.credential = {"username": "", "password": "", "grant_type": "password"};
 
   $scope.login = function() {

@@ -8,7 +8,15 @@ app.service('Session', function($cookies) {
   session.getToken = function() {
     return $cookies.get('token');
   };
+
+  session.setRefreshToken = function(refreshToken) {
+    return $cookies.put('refreshToken', refreshToken);
+  };
  
+  session.getRefreshToken = function() {
+    return $cookies.get('refreshToken');
+  };
+
   session.saveUsername = function(name) {
     $cookies.put('username', name);
   };
