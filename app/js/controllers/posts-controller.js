@@ -2,17 +2,17 @@ app.controller('postsController', function($scope, $http, $location, PostService
   $scope.imageUploading = false;
 
   $scope.saveDraft = function() {
-    $scope.loading = true;
+    $scope.saving = true;
 
     PostService
       .saveDraft($scope.draft)
         .then(function success() {
           $scope.resetDraftModel();
           $location.path("/postsList");
-          $scope.loading = false;
+          $scope.saving = false;
           Materialize.toast('Post has been saved', 3000);
         }, function error() {
-          $scope.loading = false;
+          $scope.saving = false;
           Materialize.toast('Cannot save post. Server error', 5000);
         });
   };

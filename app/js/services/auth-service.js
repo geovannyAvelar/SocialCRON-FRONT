@@ -14,20 +14,23 @@ app.service('AuthService', function($http, Session, BASE_URL) {
       var expires = response.data['expires_in'] * 1000; // * 1000 to convert to milliseconds
       Session.setRefreshToken(refreshToken);
 
+      console.log(expires);
+      console.log(expires - 60000);
+
       if(expires < 60000) {
         
         authService
           .refreshToken(refreshToken)
             .then(function success(refresh) {
-              token = refresh['access_token'];
+              Session.create(refresh);
             });
 
       } else {
-        setInterval(function () {
+        interval = setInterval(function () {
           authService
             .refreshToken(refreshToken)
             .then(function success(refresh) {
-              Session.setRefreshToken(refresh['access_token']);
+              Session.create(refresh);
             });
         }, expires - 60000);
       }

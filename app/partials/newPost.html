@@ -32,15 +32,15 @@
       </p>
     </div>
 
-    <div class="row" ng-if="!loading">
-      <button type="submit" ng-class="{'disabled': draftForm.$invalid}"
+    <div class="row" ng-hide="saving">
+      <button type="submit" ng-disabled="draftForm.$invalid"
               class="btn waves-effect waves-light green">
         <i class="material-icons right">send</i> Save post
       </button>
     </div>
 
     <!-- SPINNER -->
-    <div ng-if="loading" class="preloader-wrapper active">
+    <div ng-show="saving" class="preloader-wrapper active">
       <div class="spinner-layer spinner-green-only">
         <div class="circle-clipper left">
           <div class="circle"></div>
