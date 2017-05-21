@@ -110,15 +110,19 @@
   <div class="modal-content">
     <h4>Photos</h4>
 
-    <div class="col m4 offset-m5 s12" ng-if="images.length == 0">
+  <div ng-show="loadingImages" class="progress">
+    <div class="indeterminate"></div>
+  </div>
+
+    <div class="col m4 offset-m5 s12" ng-show="images.length == 0">
       <p>There is no images to show</p>
     </div>
 
-    <div class="row" ng-if="images.length > 0">
+    <div class="row" ng-show="images.length > 0">
       <div class="col m4 s12" ng-repeat="image in images">
-        <img class="materialboxed" width="200" ng-src="data:image/*;base64,{{image.base64Image}}">
+        <img class="materialboxed" width="200" ng-src="{{'http://api.socialcron.com.br:5756/' + image.path}}">
       </div>
     </div>
-    
+
   </div>
 </div>

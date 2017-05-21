@@ -67,11 +67,14 @@ app.controller('postsController', function($scope, $http, $location, PostService
 
   $scope.findAllPhotos = function() {
     if($scope.drafts.length > 0 && $scope.selectedPost !== undefined) {
+      $scope.loadingImages = true;
+
       PostService
         .findAllPhotos($scope.selectedPost)
           .then(function success(response) {
             $scope.images = response;
             setTimeout(function(){ $('.materialboxed').materialbox(); }, 1000);
+            $scope.loadingImages = false;
           });
     }
   };
