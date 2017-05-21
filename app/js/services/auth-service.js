@@ -14,9 +14,6 @@ app.service('AuthService', function($http, Session, BASE_URL) {
       var expires = response.data['expires_in'] * 1000; // * 1000 to convert to milliseconds
       Session.setRefreshToken(refreshToken);
 
-      console.log(expires);
-      console.log(expires - 60000);
-
       if(expires < 60000) {
         
         authService
@@ -69,6 +66,7 @@ app.service('AuthService', function($http, Session, BASE_URL) {
       headers: { "Authorization": "Basic c29jaWFsY3Jvbjpzb2NpYWxjcm9u" },
       params: {"grant_type": "refresh_token", "refresh_token": refreshToken}
     }).then(function success(response) {
+      console.log(response);
       return response['access_token'];
     }, function error() {
       return "";

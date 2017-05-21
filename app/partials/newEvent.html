@@ -7,7 +7,7 @@
 </header>
 
 <div class="row">
-  <div ng-if="loading" class="progress">
+  <div ng-show="loading" class="progress">
     <div class="indeterminate"></div>
   </div>
 
@@ -41,93 +41,87 @@
   </ul>
 </div>
 
-<div id="schedulePostModal" class="modal">
-  <div class="modal-content">
+<div id="schedulePostModal" class="modal ">
+  <form id="eventForm" name="eventForm" ng-submit="save()" class="col s12 m8 offset-m2 modal-content" ng-init="init()">
     <h4>Schedule</h4>
 
     <hr>
 
-    <form id="eventForm" name="eventForm" ng-submit="save()" class="col s12 m8 offset-m3" ng-init="init()">
+    <label>Initial date</label>
 
-      <label>Initial date</label>
+    <div class="row">
+      <p class="input-field col s12">
+        <input type="datetime-local" ng-model="event.initialDate" id="initialDate" name="initialDate" required/>
+      </p>
+    </div>
 
-      <div class="row">
-        <p class="input-field col s12 m8">
-          <input type="datetime-local" ng-model="event.initialDate" 
-                  id="initialDate" name="initialDate" required/>
-        </p>
+    <label>Profile</label>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <p ng-if="profiles.length == 0">There is no profiles</p>
+
+        <select ng-if="profiles.length > 0" ng-model="event.profile" ng-options="profile.name for profile in profiles track by profile.id"
+          id="profile" name="profile" class="browser-default" required>
+        </select>
       </div>
+    </div>
 
-      <label>Profile</label>
+    <label>Repeat?</label>
 
-      <div class="row">
-        <div class="input-field col s12 m8">
-          <p ng-if="profiles.length == 0">There is no profiles</p>
-
-          <select ng-if="profiles.length > 0" 
-                  ng-model="event.profile" 
-                  ng-options="profile.name for profile in profiles track by profile.id"
-                  id="profile" name="profile" class="browser-default" required>
-          </select>
-        </div>
-      </div>
-
-      <label>Repeat?</label>
-
-      <div class="row">
-        <p class="input-field col s12 m12">
-          <div class="switch">
-            <label>
+    <div class="row">
+      <p class="input-field col s12">
+        <div class="switch">
+          <label>
                 No
                 <input type="checkbox" ng-model="repeat">
                 <span class="lever"></span>
                 Yes
             </label>
-          </div>
+        </div>
+      </p>
+    </div>
+
+    <div ng-show="repeat">
+
+      <label>Limit date</label>
+
+      <div class="row">
+        <p class="input-field col s12">
+          <input type="date" ng-model="event.limitDate" id="limitDate" name="limitDate" />
         </p>
       </div>
 
-      <div ng-show="repeat">
-
-        <label>Limit date</label>
-
-        <div class="row">
-          <p class="input-field col s12 m8">
-            <input type="date" ng-model="event.limitDate" id="limitDate" name="limitDate" />
-          </p>
-        </div>
-
-        <label>Period</label>
-
-        <div class="row">
-          <div class="input-field col s12">
-            <p class="range-field col s12 m8">
-              <input type="range" ng-model="event.interval" 
-                     name="interval" id="interval" min="1" max="60" />
-            </p>
-
-            <select class="col s12 m4 right browser-default" 
-                    ng-model="event.period" 
-                    ng-options="period.name for period in periods track by period.name"
-                    id="period" name="period" required>
-            </select>
-          </div>
-        </div>
-      </div>
+      <label>Period</label>
 
       <div class="row">
-        <button type="submit" ng-class="{'disabled': eventForm.$invalid}" 
-                class="btn waves-effect waves-light green">
-          <i class="material-icons right">send</i> Save
-        </button>
+        <div class="input-field col s12">
+          <p class="range-field col s12 m8">
+            <input type="range" ng-model="event.interval" name="interval" id="interval" min="1" max="60" />
+          </p>
+
+          <select class="col s12 m4 right browser-default" ng-model="event.period" ng-options="period.name for period in periods track by period.name"
+            id="period" name="period" required>
+          </select>
+        </div>
       </div>
-    </form>
-  </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" ng-disabled="eventForm.$invalid || saving" class="btn waves-effect waves-light green">
+        <i class="material-icons right">send</i> Save
+      </button>
+
+      <div ng-if="saving" class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+  </form>
 </div>
 
 <div id="calendarModal" class="modal bottom-sheet">
   <div class="modal-content">
     <h4>Schedule</h4>
-    
+
   </div>
 </div>

@@ -2,6 +2,7 @@ app.service('Session', function($cookies) {
   var session = {};
  
   session.create = function(token) {
+    $cookies.remove('token');
     $cookies.put('token', token);
   };
  

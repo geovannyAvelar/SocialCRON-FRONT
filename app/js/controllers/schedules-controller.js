@@ -15,7 +15,7 @@ app.controller('schedulesController', function($scope, $location, EventsService,
   };
 
   $scope.save = function() {
-    $scope.loading = true;
+    $scope.saving = true;
     $scope.eventToSave = {}
 
     if($scope.repeat) {
@@ -27,7 +27,6 @@ app.controller('schedulesController', function($scope, $location, EventsService,
     $scope.eventToSave.initialDate = moment($scope.event.initialDate).format("YYYY-MM-DDTHH:mmZZ");
     $scope.eventToSave.post = $scope.post;
     $scope.eventToSave.profile = $scope.event.profile;
-    console.log($scope.eventToSave);
 
     EventsService
       .save($scope.eventToSave)
@@ -35,10 +34,10 @@ app.controller('schedulesController', function($scope, $location, EventsService,
           $location.path("/eventsList");
           $scope.findAll();
           $("#eventForm").modal('close');
-          $scope.loading = false;
+          $scope.saving = false;
           Materialize.toast('Event has been saved', 3000);
         }, function error() {
-           $scope.loading = false;
+           $scope.saving = false;
            Materialize.toast('Cannot save event. Server error', 5000);
         });
   };

@@ -45,6 +45,14 @@
    color: #000;
  }
 
+.input-field input[type=date]:focus+label {
+   color: #000;
+ }
+
+ .input-field input[type=datetime-local]:focus+label {
+   color: #000;
+ }
+
  .input-field textarea:focus {
    border-bottom: 1px solid #000 !important;
    box-shadow: 0 1px 0 0 #000 !important;
@@ -52,6 +60,16 @@
 
  .input-field textarea:focus+label {
    color: #000 !important;
+ }
+
+ .input-field input[type=datetime-local]:focus {
+   border-bottom: 1px solid #000;
+   box-shadow: 0 1px 0 0 #000;
+ }
+
+.input-field input[type=date]:focus {
+   border-bottom: 1px solid #000;
+   box-shadow: 0 1px 0 0 #000;
  }
 
  .input-field input[type=password]:focus {
@@ -82,6 +100,14 @@
  .input-field .prefix.active {
    color: #000;
  }
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #000 !important;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color:#9e9e9e !important;
+}
 
  header,
  main,
