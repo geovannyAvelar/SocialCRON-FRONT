@@ -1,5 +1,5 @@
-app.controller('schedulesController', function($scope, $location, EventsService, PostService,
-                                                ProfilesService, SchedulesService) {
+app.controller('schedulesController', function($scope, $location, EventsService, 
+                                               PostService, ProfilesService, SchedulesService) {
   $scope.periods = [{"name": "HOUR"}, {"name": "DAY"}, {"name": "WEEK"}];
   $scope.event = { 'limitDate': new Date(), 
                    'interval': 1, 
@@ -61,14 +61,20 @@ app.controller('schedulesController', function($scope, $location, EventsService,
       SchedulesService
         .findByPost($scope.selectedPostId)
           .then(function success(response) {
-            for(var i = 0; i < response.length; i++) {
+            $scope.schedules = [];
+
+            for(var i in response) {
               var schedule = response[i];
+
+              if(schedule['completed'] == false) {
+                schedule['date'] = moment(schedule['date']).utc().local().format("LLL");
+                $scope.schedules.push(schedule);
+              }
+
             }
           }, function error() {
             Materialize.toast('Cannot retrieve posts. Server error', 5000);
           });
-    } else {
-      Materialize.toast('You need to select a post', 5000);
     }
   };
 

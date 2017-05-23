@@ -121,7 +121,18 @@
 
 <div id="calendarModal" class="modal bottom-sheet">
   <div class="modal-content">
-    <h4>Schedule</h4>
+    <h4>Schedules</h4>
+
+    <ul class="collection col s12">
+      <li class="collection-item" ng-repeat="schedule in schedules">
+        <div>
+          {{schedule.date}}
+          <span lass="secondary-content">
+            
+          </span>
+        </div>
+      </li>
+    </ul>
 
   </div>
 </div>
