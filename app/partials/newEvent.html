@@ -11,6 +11,20 @@
     <div class="indeterminate"></div>
   </div>
 
+  <div ng-show="posts.length == 0" class="row">
+    <div class="col s12 m4 offset-m5">
+      <div class="card grey lighten-5">
+        <div class="card-content dark-text">
+          <span class="card-title">There is no posts to schedule</span>
+          <p></p>
+        </div>
+        <div class="card-action">
+          <a href="/#!/newPost" class="black-text">Create one</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <ul id="listPosts" class="collapsible popout col s12 m7 offset-m4" data-collapsible="accordion">
 
     <li ng-repeat="post in posts">
