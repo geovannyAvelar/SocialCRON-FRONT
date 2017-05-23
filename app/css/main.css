@@ -1,14 +1,14 @@
 #calendarModal {
-  height: 85% !important; 
-  max-height: 100% !important; 
+  height: 85% !important;
+  max-height: 100% !important;
   overflow-y: auto !important;
 }
 
 .clearfix:after {
-  content:".";
-  display:block;
-  height:0;
-  clear:both;
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
   visibility: hidden;
 }
 
@@ -28,98 +28,117 @@
   color: red;
 }
 
- .input-field label {
-   color: #000;
- }
+.input-field label {
+  color: #000;
+}
 
- .input-field input[type=text]:focus+label {
-   color: #000;
- }
+.input-field input[type=text]:focus+label {
+  color: #000;
+}
 
- .input-field input[type=text]:focus {
-   border-bottom: 1px solid #000;
-   box-shadow: 0 1px 0 0 #000;
- }
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
 
- .input-field input[type=password]:focus+label {
-   color: #000;
- }
+.input-field input[type=password]:focus+label {
+  color: #000;
+}
 
 .input-field input[type=date]:focus+label {
-   color: #000;
- }
+  color: #000;
+}
 
- .input-field input[type=datetime-local]:focus+label {
-   color: #000;
- }
+.input-field input[type=datetime-local]:focus+label {
+  color: #000;
+}
 
- .input-field textarea:focus {
-   border-bottom: 1px solid #000 !important;
-   box-shadow: 0 1px 0 0 #000 !important;
- }
+.input-field textarea:focus {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
 
- .input-field textarea:focus+label {
-   color: #000 !important;
- }
+.input-field textarea:focus+label {
+  color: #000 !important;
+}
 
- .input-field input[type=datetime-local]:focus {
-   border-bottom: 1px solid #000;
-   box-shadow: 0 1px 0 0 #000;
- }
+.input-field input[type=datetime-local]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
 
 .input-field input[type=date]:focus {
-   border-bottom: 1px solid #000;
-   box-shadow: 0 1px 0 0 #000;
- }
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
 
- .input-field input[type=password]:focus {
-   border-bottom: 1px solid #000;
-   box-shadow: 0 1px 0 0 #000;
- }
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
 
- .input-field input[type=text].valid {
-   border-bottom: 1px solid #000;
-   box-shadow: 0 1px 0 0 #000;
- }
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
 
- .input-field input[type=text].invalid {
-   border-bottom: 1px solid #000;
-   box-shadow: 0 1px 0 0 #000;
- }
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
 
- .input-field textarea.valid {
-   border-bottom: 1px solid #000 !important;
-   box-shadow: 0 1px 0 0 #000 !important;
- }
+input[type=range]::-webkit-slider-thumb {
+  background-color: #000;
+}
 
- .input-field textarea.invalid {
-   border-bottom: 1px solid #000 !important;
-   box-shadow: 0 1px 0 0 #000 !important;
- }
+input[type=range]::-moz-range-thumb {
+  background-color: #000;
+}
 
- .input-field .prefix.active {
-   color: #000;
- }
+input[type=range]::-ms-thumb {
+  background-color: #000;
+}
+
+input[type=range]+.thumb {
+  background-color: #dedede;
+}
+
+input[type=range]+.thumb.active .value {
+  color: #000;
+}
+
+.input-field textarea.valid {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
+
+.input-field textarea.invalid {
+  border-bottom: 1px solid #000 !important;
+  box-shadow: 0 1px 0 0 #000 !important;
+}
+
+.input-field .prefix.active {
+  color: #000;
+}
 
 .switch label input[type=checkbox]:checked+.lever:after {
-    background-color: #000 !important;
+  background-color: #000 !important;
 }
 
 .switch label input[type=checkbox]:checked+.lever {
-    background-color:#9e9e9e !important;
+  background-color: #dedede !important;
 }
 
- header,
- main,
- footer {
-   padding-left: 300px;
- }
+header,
+main,
+footer {
+  padding-left: 300px;
+}
 
- @media only screen and (max-width: 992px) {
-   header,
-   main,
-   footer {
-     padding-left: 0;
-   }
- }
-        
+@media only screen and (max-width: 992px) {
+  header,
+  main,
+  footer {
+    padding-left: 0;
+  }
+}

@@ -58,6 +58,8 @@ app.controller('schedulesController', function($scope, $location, EventsService,
 
   $scope.findSchedulesByPost = function() {
     if($scope.selectedPostId !== undefined) {
+      $scope.schedulesLoading = true;
+
       SchedulesService
         .findByPost($scope.selectedPostId)
           .then(function success(response) {
@@ -72,8 +74,12 @@ app.controller('schedulesController', function($scope, $location, EventsService,
               }
 
             }
+
+            $scope.schedulesLoading = false;
+
           }, function error() {
             Materialize.toast('Cannot retrieve posts. Server error', 5000);
+            $scope.schedulesLoading = false;
           });
     }
   };

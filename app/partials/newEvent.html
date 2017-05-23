@@ -123,6 +123,10 @@
   <div class="modal-content">
     <h4>Schedules</h4>
 
+    <div ng-show="schedulesLoading" class="progress">
+      <div class="indeterminate"></div>
+    </div>
+
     <ul class="collection col s12">
       <li class="collection-item" ng-repeat="schedule in schedules">
         <div>
