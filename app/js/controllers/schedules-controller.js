@@ -31,9 +31,9 @@ app.controller('schedulesController', function($scope, $location, EventsService,
     EventsService
       .save($scope.eventToSave)
         .then(function(response) {
-          $location.path("/eventsList");
-          $scope.findAll();
+          $scope.findSchedulesByPost();
           $("#eventForm").modal('close');
+          $("#calendarModal").modal('open');
           $scope.saving = false;
           Materialize.toast('Event has been saved', 3000);
         }, function error() {
