@@ -1,4 +1,4 @@
-app.service('AuthService', function($http, Session, BASE_URL) {
+app.service('AuthService', function($http, $location, Session, BASE_URL) {
   var authService = {};
  
   authService.login = function(credentials) {
@@ -14,23 +14,11 @@ app.service('AuthService', function($http, Session, BASE_URL) {
       var expires = response.data['expires_in'] * 1000; // * 1000 to convert to milliseconds
       Session.setRefreshToken(refreshToken);
 
-      if(expires < 60000) {
-        
-        authService
-          .refreshToken(refreshToken)
-            .then(function success(refresh) {
-              Session.create(refresh);
-            });
-
-      } else {
-        interval = setInterval(function () {
-          authService
-            .refreshToken(refreshToken)
-            .then(function success(refresh) {
-              Session.create(refresh);
-            });
-        }, expires - 60000);
-      }
+      var closeSession = setInterval(function () {
+        authService.logout();
+        $location.path("/");
+        Materialize.toast('Your session has expired. Sign in again');
+      }, expires);
 
       Session.create(token);
 
