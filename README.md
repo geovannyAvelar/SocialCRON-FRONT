@@ -1,4 +1,4 @@
-# SocialCRON-FRONT
+# SocialCRON-FRONT [DEPRECATED SINCE 4th July 2017]
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 Front-end layer of SocialCRON platform. SocialCRON is an open-source platform to schedule posts on social media sites
